@@ -445,4 +445,10 @@ public class Game implements GameControl, GameInfoProvider {
     public int getTick() {
         return tick;
     }
+
+    /**
+     * @return Invader Count
+     */
+    public int getInvaderCount(){return invadersList.size();}
 }
+

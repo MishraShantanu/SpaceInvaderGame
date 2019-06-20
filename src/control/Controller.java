@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 
 import util.PropertiesDiskStorage;
+import view.InvaderCountFrame;
 import view.View;
 import model.Game;
 import model.GameInfoProvider;
@@ -31,6 +32,9 @@ public class Controller implements KeyListener, ActionListener, GameObserver {
      * The frame to hold the panel with the current view of the game.
      */
     private View view;
+
+    private InvaderCountFrame invaderCount;
+
 
     /**
      * Create a view object, and have the view display the initial welcome message.
@@ -65,6 +69,10 @@ public class Controller implements KeyListener, ActionListener, GameObserver {
             gameControl = game;
             gameInfo = game;
             gameInfo.addObserver(this); // this is passed in as a GameObserver
+
+            invaderCount = new InvaderCountFrame(gameInfo);
+            invaderCount.setLocation(WIDTH, 0);
+
             view.showNewGameView(gameInfo, this); // this is passed in as a KeyListener
             gameControl.start();
         } else if (actionCommand.equals("savescore")) {
@@ -140,6 +148,7 @@ public class Controller implements KeyListener, ActionListener, GameObserver {
                         view.showWelcomeView(thisController);
                         // this controller is passed in as an ActionListener
                     }
+                    invaderCount.setVisible(false);
                 }
             });
             /*

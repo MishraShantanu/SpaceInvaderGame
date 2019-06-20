@@ -24,4 +24,6 @@ public interface GameInfoProvider {
     public int getTick();
 
     public void setInvaderSynchronizationObject(Object reference);
+
+    public int getInvaderCount();
 }
