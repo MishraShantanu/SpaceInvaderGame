@@ -14,12 +14,26 @@ import java.util.List;
 
 import static java.awt.Font.BOLD;
 
+/**
+ * invader count panel which hold the count no and the image of invader
+ */
 public class InvaderCountPanel extends JPanel implements GameObserver {
-
+    /**
+     * info : the current state of game
+     * invader count : number of invader left
+     * image: list of invader buff.
+     * imageIterator: iterator for iterating through image
+     */
     private GameInfoProvider info;
     private int invaderCount;
     private List<BufferedImage> image;
     private Iterator<BufferedImage> imageIterator;
+
+    /**
+     * create frame having count of invader left & image of invader
+     * moving on kill
+     * @param info current state of game
+     */
 
     public InvaderCountPanel(GameInfoProvider info){
         this.info = info;
@@ -44,7 +58,10 @@ public class InvaderCountPanel extends JPanel implements GameObserver {
 
     }
 
-
+    /**
+     * for repainting
+     * @param g
+     */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g1 = (Graphics2D)g;
@@ -60,15 +77,13 @@ public class InvaderCountPanel extends JPanel implements GameObserver {
 
             BufferedImage image = imageIterator.next();
 
-
-
-            g1.drawImage(image,60,50,null);
+            g1.drawImage(image,40,50,100,70,null);
 
             g1.setPaint(Color.GREEN);
             g1.drawString("INVADER COUNT",40,20);
 
             g1.drawLine(0,30,300,30);
-            g1.drawString("The number of left :" + invaderCount,30,110);
+            g1.drawString("The number of left :" + invaderCount,30,130);
 
             g1.setPaint(Color.BLACK);
 
