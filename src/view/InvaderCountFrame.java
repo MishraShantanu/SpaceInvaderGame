@@ -17,7 +17,7 @@ public class InvaderCountFrame extends JFrame {
      */
     public InvaderCountFrame(GameInfoProvider info){
 
-        setTitle("Invader Count");
+        setTitle("Invader  Count");
         setSize(200,200);
         setResizable(false);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
