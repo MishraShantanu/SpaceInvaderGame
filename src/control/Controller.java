@@ -32,6 +32,9 @@ public class Controller implements KeyListener, ActionListener, GameObserver {
      * The frame to hold the panel with the current view of the game.
      */
     private View view;
+    /**
+     * The Frame to hold the panel with the Invader count(# of invader left)
+     */
 
     private InvaderCountFrame invaderCount;
 
