@@ -11,7 +11,7 @@ public class Laser extends GameObject {
     public static int MOVE_DISTANCE = 6;
 
     /** How frequently (in terms of ticks) the laser is to change image. */
-    public static final int CHANGE_FREQ = 40;
+    public static final int CHANGE_FREQ = 4;
 
     /** A count of the number of ticks since creation. */
     private int tickCount;
