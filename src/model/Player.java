@@ -1,5 +1,10 @@
 package model;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
 /**
  * The player in the space invaders game.
  */
@@ -26,6 +31,17 @@ public class Player extends GameObject {
     public static final int CHANGE_FREQ = 0;
 
     /**
+     * To check if player ready to fire next laser after recharging
+     */
+
+    boolean fireCharge = true;
+    /**
+     * timer for recharging the laser fire
+     */
+
+    Timer fireChargeTimer;
+
+    /**
      * Initialize the player.
      */
     public Player(int x, int y, Game game) {
@@ -34,7 +50,13 @@ public class Player extends GameObject {
         height = HEIGHT;
         lives = INITIAL_NUM_LIVES;
         score = 0;
+
+        fireChargeTimer = new Timer(500, new ActionListener() {
+            @Override public void actionPerformed(ActionEvent e) { fireCharge = true; }});
+        fireChargeTimer.setRepeats(false);
     }
+
+
 
     /**
      * No actions for the player at clock ticks.
@@ -59,10 +81,12 @@ public class Player extends GameObject {
      * If canFire, fire a laser.
      */
     public void fire() {
-        if (game.laser == null) {
+        if (fireCharge) {
             int laserX = x + (width - Laser.WIDTH) / 2;
             int laserY = y - Laser.HEIGHT;
             game.addLaser(new Laser(laserX, laserY, game));
+            fireCharge = false;
+            fireChargeTimer.start();
         }
     }
 
